@@ -41,6 +41,7 @@ override_dh_clideps:
 		--exclude-moduleref=libgamin-1.so.0 \
 		--exclude-moduleref=libmono-btls-shared \
 		--exclude-moduleref=lzo.dll \
+		--exclude-moduleref=Microsoft.VisualStudio.Setup.Configuration.Native.dll \
 		--exclude-moduleref=mscoree.dll \
 		--exclude-moduleref=mscorwks.dll \
 		--exclude-moduleref=msvcrt \

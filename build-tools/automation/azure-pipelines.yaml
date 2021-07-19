@@ -413,7 +413,7 @@ stages:
   jobs:
   - job: linux_build_test
     displayName: Build and Smoke Test
-    pool: Xamarin-Android-Ubuntu20.04
+    pool: android-devdiv-ubuntu-vmss
     timeoutInMinutes: 240
     cancelTimeoutInMinutes: 2
     workspace:
@@ -433,29 +433,12 @@ stages:
       workingDirectory: $(System.DefaultWorkingDirectory)/xamarin-android
       displayName: delete external xamarin-android submodule
 
-    - template: yaml-templates/use-dot-net.yaml
-      parameters:
-        version: $(DotNet5Version)
-
-    - template: yaml-templates/use-dot-net.yaml
-      parameters:
-        version: $(DotNetCoreVersion)
+    - template: yaml-templates/setup-ubuntu.yaml
 
     - task: NuGetAuthenticate@0
       displayName: authenticate with azure artifacts
       inputs:
         forceReinstallCredentialProvider: true
-
-    - script: >
-        sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF &&
-        echo "deb https://download.mono-project.com/repo/ubuntu stable-focal main" | sudo tee /etc/apt/sources.list.d/mono-official-stable.list &&
-        sudo apt-get update &&
-        sudo apt-get install -y --no-install-recommends apt-transport-https mono-complete nuget
-      displayName: install mono
-
-    - task: NuGetToolInstaller@0
-      inputs:
-        versionSpec: 5.x
 
     - script: make prepare-external-git-dependencies PREPARE_CI=1 CONFIGURATION=$(XA.Build.Configuration)
       workingDirectory: $(System.DefaultWorkingDirectory)/xamarin-android
