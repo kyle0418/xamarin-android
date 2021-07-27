@@ -1,5 +1,8 @@
 steps:
 - template: use-dot-net.yaml
+  parameters:
+    remove_dotnet: true
+    version: 6.0.100-preview.6.21355.2
 
 - template: use-dot-net.yaml
   parameters:

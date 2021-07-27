@@ -178,6 +178,8 @@ stages:
       displayName: set JI_JAVA_HOME
 
     - template: yaml-templates\use-dot-net.yaml
+      parameters:
+        remove_dotnet: true
 
     - template: yaml-templates\use-dot-net.yaml
       parameters:
@@ -300,6 +302,8 @@ stages:
       displayName: set JI_JAVA_HOME
 
     - template: yaml-templates\use-dot-net.yaml
+      parameters:
+        remove_dotnet: true
 
     - template: yaml-templates\use-dot-net.yaml
       parameters:

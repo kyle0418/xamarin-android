@@ -34,6 +34,8 @@ steps:
   condition: and(succeeded(), eq(variables['agent.os'], 'Windows_NT'))
 
 - template: use-dot-net.yaml
+  parameters:
+    remove_dotnet: true
 
 - task: MSBuild@1
   displayName: build xaprepare
