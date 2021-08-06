@@ -178,9 +178,6 @@ stages:
     - script: make jenkins V=1 PREPARE_CI_PR=1 PREPARE_AUTOPROVISION=1 CONFIGURATION=$(XA.Build.Configuration)
       displayName: make jenkins
 
-    - script: make create-nupkgs V=1 CONFIGURATION=$(XA.Build.Configuration)
-      displayName: make create-nupkgs
-
     - script: make package-deb V=1 CONFIGURATION=$(XA.Build.Configuration)
       displayName: make package-deb
 
